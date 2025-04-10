@@ -1,0 +1,32 @@
+[[language]]
+name = "rust"
+scope = "source.rust"
+file-types = ["rs"]
+roots = ["Cargo.toml"]
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+cargo = { allFeatures = true }
+check = { command = "clippy" }
+
+# Use rustfmt for automatic formatting
+[language.formatter]
+command = "rustfmt"
+args = ["--edition", "2024"]
+
+[[language]]
+name = "toml"
+scope = "source.toml"
+injection-regex = "toml"
+file-types = ["toml"]
+language-servers = ["taplo"]
+formatter = { command = "taplo", args = ["format", "-"] }
+auto-format = true
+
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
