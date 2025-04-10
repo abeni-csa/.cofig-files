@@ -1,0 +1,18 @@
+theme = "dracula"
+
+[editor]
+line-number = "relative"
+mouse = false
+true-color = true
+rulers = [100]
+bufferline = "always"
+[keys.normal]
+C-n = [":buffer-next"]
+C-p = [":buffer-previous"]
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
