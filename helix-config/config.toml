@@ -1,14 +1,27 @@
 theme = "dracula"
-
 [editor]
 line-number = "relative"
 mouse = false
 true-color = true
-rulers = [100]
+rulers = [80, 140]
 bufferline = "always"
-[keys.normal]
-C-n = [":buffer-next"]
-C-p = [":buffer-previous"]
+end-of-line-diagnostics = "hint" # or "warning", "error", "info", "debug"
+
+[editor.statusline]
+left = ["mode", "spinner", "read-only-indicator", "file-modification-indicator"]
+center = ["file-name", "version-control"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "VISUAL"
+
+[editor.auto-save]
+focus-lost  = true
+after-delay.enable = true
+after-delay.timeout = 300000
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -16,3 +29,53 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+[editor.lsp]
+goto-reference-include-declaration = false
+display-inlay-hints = true
+display-progress-messages = true
+
+[editor.indent-guides]
+render = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.smart-tab]
+supersede-menu = true
+
+[editor.inline-diagnostics]
+cursor-line = "error" # or "warning", "hint", "info", "debug"
+other-lines = "hint"  # or "warning", "hint", "info", "debug"
+prefix-len = 2
+max-diagnostics = 20
+
+[keys.normal]
+X = "select_line_above"
+C-n = [":buffer-next"]
+C-p = [":buffer-previous"]
+A-v = ["vsplit", "goto_definition"]
+A-h = ["hsplit", "goto_definition"]
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+D = ["ensure_selections_forward", "extend_to_line_end", "delete_selection"]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
+V = ["select_mode", "extend_to_line_bounds"]
+esc = ["collapse_selection", "keep_primary_selection"]
+
+
+[keys.normal."+"]
+f = ":format"
+
+[keys.normal.backspace]
+w = ":write-all"
+r = [":reload-all", ":config-reload"]
+
+[keys.insert]
+C-n = [":buffer-next"]
+C-p = [":buffer-previous"]
+A-v = ["vsplit", "goto_definition"]
+A-h = ["hsplit", "goto_definition"]
+
